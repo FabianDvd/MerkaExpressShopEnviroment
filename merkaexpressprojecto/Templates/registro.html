@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+   {% load static %}
+<head>
+
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>MerkaExpress - Registro</title>
+   <link rel="stylesheet" href="{% static 'css/Register.css' %}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+   <!-- Header fijo en la parte superior -->
+   <header>
+       <div class="logo-container">
+          <img src="{% static 'images/merkaexpress-negro.png' %}" alt="Logo MerkaExpress" class="logo">
+       </div>
+       <div class="search-container">
+          <input type="text" placeholder="Buscar productos..." class="search-input">
+          <button class="search-button"><i class="fas fa-search"></i></button>
+          <button class="barcode-button"><i class="fas fa-barcode"></i></button>
+       </div>
+       <div class="header-options">
+          <div class="delivery-option">
+             <i class="fas fa-truck"></i><span>Entrega</span>
+          </div>
+          <div class="user-options">
+             <a href="#" title="Mi cuenta"><i class="fas fa-user"></i></a>
+             <a href="#" title="Perfil"><i class="fas fa-user-circle"></i></a>
+             <a href="#" class="cart" title="Carrito">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+             </a>
+             <span class="total">Total: $0</span>
+          </div>
+       </div>
+   </header>
+
+   <!-- Contenedor principal para centrar el formulario -->
+   <div class="main-container">
+      <div class="FormContainer">
+         <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label>Registro</label>
+
+            <!-- Renderizar errores -->
+            {% if form.errors %}
+               <div class="alert alert-danger">
+                  <ul>
+                     {% for field in form %}
+                        {% for error in field.errors %}
+                           <li>{{ field.label }}: {{ error }}</li>
+                        {% endfor %}
+                     {% endfor %}
+                     {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                     {% endfor %}
+                  </ul>
+               </div>
+            {% endif %}
+
+            <!-- Renderizar cada campo con tu mismo diseño -->
+            <div class="Input-Container">
+               <label for="{{ form.correo_electronico.id_for_label }}">Ingrese Su Correo</label>
+               <span class="Icon"><ion-icon name="mail"></ion-icon></span>
+               {{ form.correo_electronico }}
+            </div>
+
+            <div class="Input-Container">
+               <label for="{{ form.nombre_completo.id_for_label }}">Nombre De Usuario</label>
+               <span class="Icon"><ion-icon name="person-circle"></ion-icon></span>
+               {{ form.nombre_completo }}
+            </div>
+
+            <div class="Input-Container">
+               <label for="{{ form.contrasena.id_for_label }}">Contraseña</label>
+               <span class="Icon"><ion-icon name="lock-closed"></ion-icon></span>
+               {{ form.contrasena }}
+            </div>
+
+            <div class="Input-Container">
+               <label for="{{ form.numero_celular.id_for_label }}">Número de Celular</label>
+               <span class="Icon"><ion-icon name="call"></ion-icon></span>
+               {{ form.numero_celular }}
+            </div>
+
+            <div class="Input-Container">
+               <label for="{{ form.foto_perfil.id_for_label }}">Foto de Perfil</label>
+               <span class="Icon"><ion-icon name="image"></ion-icon></span>
+               {{ form.foto_perfil }}
+            </div>
+
+            <div class="check-container">
+               <label>
+                  <input type="checkbox" required>
+                  Estoy de acuerdo con las políticas de privacidad y términos de servicio de la empresa
+               </label>
+            </div>
+
+            <button id="ButtonRegister" type="submit">
+               Registrarse
+            </button>
+         </form>
+      </div>
+   </div>
+
+   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script> 
+   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

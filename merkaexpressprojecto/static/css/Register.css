@@ -1,0 +1,331 @@
+:root {
+  /* Colores base para ecommerce colombiano */
+  --color-primary: #009688;      /* verde azulado */
+  --color-secondary: #FFC107;    /* amarillo cálido */
+  --bg-light: #F5F5F5;
+  --text-dark: #263238;
+  --text-light: #FFFFFF;
+  --input-bg: #FFFFFF;
+  --input-border: #B0BEC5;
+  --input-focus: #009688;
+  --btn-bg: #009688;
+  --btn-hover: #00796B;
+  --btn-text: #FFFFFF;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  min-height: 100vh;
+  padding-top: 80px; /* Espacio for el header fijo */
+}
+
+/* Header fijo en la parte superior */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: var(--color-primary);
+  box-shadow: var(--shadow);
+}
+
+.logo-container .logo {
+  height: 40px;
+}
+
+.search-container {
+  flex: 1;
+  position: relative;
+  margin: 10px;
+  max-width: 600px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.search-button, .barcode-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-dark);
+  transition: color 0.3s ease;
+}
+
+.search-button:hover, .barcode-button:hover {
+  color: var(--color-primary);
+}
+
+.search-button { right: 45px; }
+.barcode-button { right: 10px; }
+
+.header-options {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--text-light);
+}
+
+.delivery-option {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.delivery-option i {
+  margin-right: 6px;
+}
+
+.user-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-options a {
+  color: var(--text-light);
+  font-size: 18px;
+  transition: opacity 0.3s ease;
+}
+
+.user-options a:hover {
+  opacity: 0.8;
+}
+
+.cart {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px; 
+  right: -5px;
+  background: var(--color-secondary);
+  color: var(--text-dark);
+  border-radius: 50%;
+  width: 18px; 
+  height: 18px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 18px;
+  font-weight: bold;
+}
+
+.total {
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+/* Contenedor principal para centrar el formulario */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: 20px;
+}
+
+/* Formulario de registro */
+.FormContainer {
+  width: 100%;
+  max-width: 450px;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  background-color: var(--input-bg);
+  border: 1px solid #E0E0E0;
+}
+
+.FormContainer form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.FormContainer form > label:first-child {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.Input-Container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  width: 100%;
+  position: relative;
+  border: 2px solid var(--input-border);
+  border-radius: 8px;
+  padding: 0.5rem 1rem 1rem 3rem;
+  transition: border-color 0.3s ease;
+  background-color: var(--input-bg);
+}
+
+.Input-Container:focus-within {
+  border-color: var(--input-focus);
+}
+
+.Input-Container .Icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--color-primary);
+}
+
+.Input-Container input,
+.Input-Container select {
+  background-color: transparent;
+  border: none;
+  padding: 0.8rem 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+  border-radius: 4px;
+  outline: none;
+  color: var(--text-dark);
+}
+
+.Input-Container input::placeholder {
+  color: #999;
+}
+
+.Input-Container label {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  font-weight: 500;
+  user-select: none;
+}
+
+/* Checkbox personalizado */
+.check-container {
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.check-container label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.check-container input[type="checkbox"] {
+  margin: 0;
+  accent-color: var(--color-primary);
+}
+
+/* Botones sociales */
+.RegisterWithSocial {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+.RegisterWithSocial button {
+  background: #fff;
+  border: 2px solid #E0E0E0;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+}
+
+.RegisterWithSocial button:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.RegisterWithSocial img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Botón de registro principal */
+#ButtonRegister {
+  background-color: var(--btn-bg);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--btn-text);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+#ButtonRegister:hover {
+  background-color: var(--btn-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 150, 136, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 15px;
+    height: auto;
+  }
+  
+  body {
+    padding-top: 120px;
+  }
+  
+  .search-container {
+    order: 3;
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  .header-options {
+    order: 2;
+    margin-bottom: 10px;
+  }
+  
+  .FormContainer {
+    margin: 10px;
+    padding: 2rem;
+  }
+  
+  .total {
+    display: none;
+  }
+}
